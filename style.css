@@ -1,0 +1,29 @@
+html,
+body {
+  font-size: 1rem;
+  margin: 0;
+  font-family: "roboto", sans-serif;
+  height: 100%;
+  color: #ffffff;
+  background-color: #00003b;
+}
+
+body,
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  width: 50%;
+  text-align: center;
+}
+
+h1 {
+  width: 100%;
+  font-size: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid;
+}
