@@ -1,2 +1,3 @@
-# number-sequencing-game
-Ordering Game using arrays
+# Number Sequencing Game
+
+Ordering game using arrays
