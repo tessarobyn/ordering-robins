@@ -15,24 +15,66 @@ class OrderingGame {
     this.robinNumText = document.getElementById("robinNum");
   }
 
-  moveRobin(index) {
+  moveRobin(index, num) {
     const container = this.robinContainers.get(index);
     container.innerHTML = "";
     container.appendChild(this.currentRobin.robin);
+    this.userArray.assign(index, num);
+    console.log(this.userArray);
   }
 
   checkMoveAllowed(index, num) {
-    this.moveRobin(index);
-    this.startTurn();
+    let lowFound = false;
+    let lowOk = false;
+    let currentIndex = index--;
+    for (let i = currentIndex; i >= 0; i--) {
+      if (this.userArray.get(i) != undefined && !lowFound) {
+        lowFound = true;
+        if (this.userArray.get(i) <= num) {
+          lowOk = true;
+        }
+      }
+    }
+    if (!lowFound) {
+      lowOk = true;
+    }
+
+    let highFound = false;
+    let highOk = false;
+    currentIndex = index += 1;
+    for (let i = currentIndex; i < this.userArray.getSize(); i++) {
+      if (this.userArray.get(i) != undefined && !highFound) {
+        highFound = true;
+        if (this.userArray.get(i) >= num) {
+          highOk = true;
+        }
+      }
+    }
+    if (!highFound) {
+      highOk = true;
+    }
+
+    console.log(lowOk, highOk);
+
+    if (lowOk && highOk) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   checkContainerClick() {
     for (let i = 0; i < this.robinContainers.getSize(); i++) {
       this.robinContainers.get(i).addEventListener("click", () => {
-        this.checkMoveAllowed(
-          this.robinContainers.get(i).id,
-          this.currentRobin.num
-        );
+        if (
+          this.checkMoveAllowed(
+            this.robinContainers.get(i).id,
+            this.currentRobin.num
+          ) === true
+        ) {
+          this.moveRobin(this.robinContainers.get(i).id, this.currentRobin.num);
+          this.startTurn();
+        }
       });
     }
   }
@@ -53,6 +95,17 @@ class OrderingGame {
       this.currentRobin = this.newRobin(this.turn);
       this.robinNumText.innerText = `Robin Number ${this.turn}`;
       this.turn++;
+      this.gameOver = true;
+      for (let i = 0; i < this.userArray.getSize(); i++) {
+        if (this.userArray.get(i) == undefined) {
+          if (this.checkMoveAllowed(i, this.currentRobin.num) == true) {
+            this.gameOver = false;
+          }
+        }
+      }
+      if (this.gameOver) {
+        console.log("game over");
+      }
     }
   }
 
