@@ -1,9 +1,12 @@
 import { Array } from "./arrayLib.js";
 import { randomInt } from "./random.js";
-import { Robin } from "./robinDrag.js";
+import { Robin } from "./robin.js";
+import { CreateWires } from "./createWires.js";
 
 class OrderingGame {
-  constructor() {
+  constructor(robinContainers) {
+    this.robinContainers = robinContainers;
+    this.checkContainerClick();
     this.array = new Array(10);
     this.userArray = new Array(10);
     this.currentRobinContainer = document.getElementById(
@@ -11,6 +14,24 @@ class OrderingGame {
     );
     this.robinNumText = document.getElementById("robinNum");
   }
+
+  moveRobin(index) {}
+
+  checkMoveAllowed(index, num) {
+    console.log("here");
+  }
+
+  checkContainerClick() {
+    for (let i = 0; i < this.robinContainers.getSize(); i++) {
+      this.robinContainers.get(i).addEventListener("click", () => {
+        this.checkMoveAllowed(
+          this.robinContainers.get(i).id,
+          this.currentRobin.num
+        );
+      });
+    }
+  }
+
   generateCompNums() {
     for (let i = 0; i < this.array.getSize(); i++) {
       this.array.assign(i, randomInt(1, 100));
@@ -19,18 +40,27 @@ class OrderingGame {
   newRobin(index) {
     return new Robin(index, this.array.get(index), this.currentRobinContainer);
   }
+
+  startTurn() {
+    if (this.turn == 9) {
+      console.log("finished");
+    } else {
+      this.currentRobin = this.newRobin(this.turn);
+      this.robinNumText.innerText = `Robin Number ${this.turn}`;
+      this.turn++;
+    }
+  }
+
   main() {
     this.generateCompNums();
     console.log(this.array);
-    let playing = true;
-    let turn = 0;
-    while (playing && turn < 1) {
-      this.newRobin(turn);
-      this.robinNumText.innerText = `Robin Number ${turn}`;
-      turn++;
-    }
+    this.turn = 0;
+    this.startTurn();
   }
 }
 
-const game = new OrderingGame();
+const container = document.getElementById("wiresContainer");
+const wires = new CreateWires(container);
+
+const game = new OrderingGame(wires.getRobinContainers());
 game.main();
