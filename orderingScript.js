@@ -20,7 +20,6 @@ class OrderingGame {
     container.innerHTML = "";
     container.appendChild(this.currentRobin.robin);
     this.userArray.assign(index, num);
-    console.log(this.userArray);
   }
 
   checkMoveAllowed(index, num) {
@@ -53,8 +52,6 @@ class OrderingGame {
     if (!highFound) {
       highOk = true;
     }
-
-    console.log(lowOk, highOk);
 
     if (lowOk && highOk) {
       return true;
@@ -90,7 +87,7 @@ class OrderingGame {
 
   startTurn() {
     if (this.turn == 10) {
-      console.log("finished");
+      this.robinNumText.innerText = "You win!";
     } else {
       this.currentRobin = this.newRobin(this.turn);
       this.robinNumText.innerText = `Robin Number ${this.turn}`;
@@ -104,7 +101,7 @@ class OrderingGame {
         }
       }
       if (this.gameOver) {
-        console.log("game over");
+        this.robinNumText.innerText = `${this.currentRobin.num} doesn't fit. You lose!`;
       }
     }
   }
