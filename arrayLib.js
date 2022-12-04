@@ -1,4 +1,4 @@
-class Array {
+export class Array {
   constructor(size) {
     this.size = size;
     this.array = [];
