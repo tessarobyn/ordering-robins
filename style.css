@@ -1,0 +1,58 @@
+html,
+body {
+  font-size: 1rem;
+  margin: 0;
+  font-family: "roboto", sans-serif;
+  height: 100%;
+  color: #ffffff;
+  background-color: #00003b;
+  background-image: url("img/memphisBackground.PNG");
+}
+
+body,
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  width: 50%;
+  text-align: center;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(5px);
+}
+
+h1 {
+  width: 100%;
+  font-size: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid;
+  font-weight: 500;
+}
+
+p {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+button {
+  background-color: rgba(0, 0, 0, 0);
+  padding: 10px 30px 10px 30px;
+  border-radius: 20px;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  transition: background-color 0.5s ease-in-out;
+  font-size: 1rem;
+  font-weight: 300;
+  font-family: "roboto", sans-serif;
+}
+
+button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
