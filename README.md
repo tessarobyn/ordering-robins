@@ -1,3 +1,3 @@
-# Number Sequencing Game
+# Ordering Robins
 
 Ordering game using arrays
