@@ -15,10 +15,15 @@ class OrderingGame {
     this.robinNumText = document.getElementById("robinNum");
   }
 
-  moveRobin(index) {}
+  moveRobin(index) {
+    const container = this.robinContainers.get(index);
+    container.innerHTML = "";
+    container.appendChild(this.currentRobin.robin);
+  }
 
   checkMoveAllowed(index, num) {
-    console.log("here");
+    this.moveRobin(index);
+    this.startTurn();
   }
 
   checkContainerClick() {
@@ -42,7 +47,7 @@ class OrderingGame {
   }
 
   startTurn() {
-    if (this.turn == 9) {
+    if (this.turn == 10) {
       console.log("finished");
     } else {
       this.currentRobin = this.newRobin(this.turn);

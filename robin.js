@@ -16,5 +16,7 @@ export class Robin {
     robin.appendChild(beak);
     robin.appendChild(breast);
     container.appendChild(robin);
+
+    this.robin = robin;
   }
 }
