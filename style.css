@@ -4,9 +4,8 @@ body {
   margin: 0;
   font-family: "roboto", sans-serif;
   height: 100%;
-  color: #ffffff;
-  background-color: #00003b;
-  background-image: url("img/memphisBackground.PNG");
+  color: #000000;
+  background-color: #37c0ff;
 }
 
 body,
@@ -21,38 +20,64 @@ body,
   width: 50%;
   text-align: center;
   padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(5px);
+}
+
+.robin {
+  width: 200px;
+  height: 200px;
+  border-radius: 100px 100px 25px 25px;
+  background-color: #5f2b00;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.robin > .beak {
+  position: relative;
+  width: 30%;
+  height: 30%;
+  border-radius: 25px 25px 50px 50px;
+  margin-bottom: -20%;
+  background-color: #ff7b00;
+}
+
+.robin > .breast {
+  width: 70%;
+  height: 60%;
+  border-radius: 50px 50px 25px 25px;
+  background-color: #ff0000;
 }
 
 h1 {
   width: 100%;
   font-size: 3rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid;
   font-weight: 500;
 }
 
 p {
-  font-size: 1rem;
-  font-weight: 300;
+  margin-top: 0;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.buttonGroup {
+  display: flex;
 }
 
 button {
-  background-color: rgba(0, 0, 0, 0);
+  margin: 10px;
   padding: 10px 30px 10px 30px;
   border-radius: 20px;
-  color: #ffffff;
-  border: 1px solid #ffffff;
+  border-style: none;
+  color: #000000;
+  background-color: rgba(255, 255, 255, 0.5);
   transition: background-color 0.5s ease-in-out;
-  font-size: 1rem;
-  font-weight: 300;
+  font-size: 1.25rem;
+  font-weight: 400;
   font-family: "roboto", sans-serif;
 }
 
 button:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.7);
 }
